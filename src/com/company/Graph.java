@@ -3,11 +3,10 @@ package com.company;
 
 import java.util.HashSet;
 import java.util.LinkedList;
-import java.util.Scanner;
 
 public class Graph {
 
-    private LinkedList<HashSet<Integer>> list = new LinkedList<>(); //lista linkedlist, hashsetow integerow
+    private final LinkedList<HashSet<Integer>> list = new LinkedList<>();
     public void quantityGraph(){
         System.out.println(list.size());
     }
@@ -16,35 +15,34 @@ public class Graph {
         HashSet<Integer> hashSetA = null;
         HashSet<Integer> hashSetB = null;
 
-        for (int i = 0; i < list.size(); i++) {
-            HashSet<Integer> oneHashset = list.get(i);
+        for (HashSet<Integer> oneHashset : list) {
             if (oneHashset.contains(a)) {
                 hashSetA = oneHashset;
                 break;
             }
         }
-        for (int i = 0; i < list.size(); i++) {
-            HashSet<Integer> oneHashset = list.get(i);
+        for (HashSet<Integer> oneHashset : list) {
             if (oneHashset.contains(b)) {
                 hashSetB = oneHashset;
                 break;
             }
         }
-        if (hashSetA == null && hashSetB == null){ //nie ma a nie ma b
+
+        if (hashSetA == null && hashSetB == null){ //no "a" no "b"
             HashSet<Integer> newGraph = new HashSet<>();
             newGraph.add(a);
             newGraph.add(b);
             list.add(newGraph);
         }
-        if (hashSetA != null && hashSetB == null){ //jest a nie ma b
+        if (hashSetA != null && hashSetB == null){ //yes "a" no "b"
             hashSetA.add(b);
         }
 
-        if (hashSetA == null && hashSetB != null){ //nie ma a jest b
+        if (hashSetA == null && hashSetB != null){ //no "a" yes "b"
             hashSetB.add(a);
         }
 
-        if (hashSetA != null && hashSetB != null){ //jeden tak drugi tak
+        if (hashSetA != null && hashSetB != null){ //yes "a" yes "b"
             hashSetA.addAll(hashSetB);
             list.remove(hashSetB);
         }
