@@ -1,10 +1,10 @@
 ## java_task3
-MAIN.class
+### MAIN.class
 - starting with creating a Scanners and read in n from keybord
 - create Graph class instance 
 - using for loop to get all edges and add interactions between them 
 - calling method to display quantity of graphs
-Graph.class
+### GRAPH.class
 - using LinkedList for storing a HashSet's, which are representing a single graph 
 - using addInteraction method 
 - using for loop to find graph with a 
